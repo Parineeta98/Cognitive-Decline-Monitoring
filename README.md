@@ -35,7 +35,7 @@ the plots to `result_plot/`.
 
 ## Key findings
 
-**1. A normal exam doesn't always mean a normal memory score.** About 1 in 8 patients with a normal clinical exam (CDR = 0) still scored below the typical range on the MMSE test (MMSE < 28), and this shows up at a similar rate in patients who stay healthy and patients who later develop dementia. Brain-volume scans show structural decline can already be underway while the MMSE score is still normal. A clinic could flag this combination for a shorter check-in window rather than waiting for the next scheduled visit.
+**1. A normal exam doesn't always mean a normal MMSE score.** About 1 in 8 patients with a normal clinical exam (CDR = 0) still scored below the typical range on the MMSE test (MMSE < 28), and this shows up at a similar rate in patients who stay healthy and patients who later develop dementia. Brain-volume scans show structural decline can already be underway while the MMSE score is still normal. A clinic could flag this combination for a shorter check-in window rather than waiting for the next scheduled visit.
 
 **2. The MMSE stops being useful once someone's already diagnosed.** Patients rated "mild" (CDR 1) and "moderate" (CDR 2) score almost identically on the MMSE test, with heavily overlapping ranges, confirmed both in the original boxplot analysis and in the dashboard's CDR-level comparison. Past initial diagnosis, tracking progression should rely on clinical rating or structural markers instead of past MMSE scores.
 
@@ -47,7 +47,7 @@ Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.pdf`](r
 
 ![Brain volume declining with age across diagnostic groups](result_plot/age_vs_brain_volume_by_group.png)
 
-![Memory test scores by clinical dementia rating — mild and moderate stages overlap heavily](result_plot/mmse_by_cdr_boxplot.png)
+![MMSE scores by clinical dementia rating — mild and moderate stages overlap heavily](result_plot/mmse_by_cdr_boxplot.png)
 
 ![Pace of brain-volume decline varies widely across converted patients](result_plot/decline_pace_difference_by_subject.png)
 
