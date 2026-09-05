@@ -40,6 +40,14 @@ jupyter notebook eda.ipynb
 
 Full write-up: [`notes/03_Findings_and_Actions.md`](notes/03_Findings_and_Actions.md)
 
+### Selected plots
+
+![Brain volume declining with age across diagnostic groups](result_plot/age_vs_brain_volume_by_group.png)
+
+![Memory test scores by clinical dementia rating — mild and moderate stages overlap heavily](result_plot/mmse_by_cdr_boxplot.png)
+
+![Pace of brain-volume decline varies widely across converted patients](result_plot/decline_pace_difference_by_subject.png)
+
 ## Dashboard
 
 Three-page Power BI report — Overview (headline KPIs and trends), Population (demographics), Clinical Insights & Risk Indicators (regression, watch-list rate, per-subject decline). Published to Power BI Service; screenshots to be added here.
@@ -51,6 +59,7 @@ Three-page Power BI report — Overview (headline KPIs and trends), Population (
 ├── sql/                        # Analytical SQL queries (Azure SQL DB)
 ├── dashboard/                  # Power BI dashboard (.pbix) and theme
 ├── data/                       # Raw and cleaned datasets
+├── result_plot/                # Key plots referenced in this README
 ├── eda.ipynb                   # Python cleaning + EDA notebook
 ├── requirements.txt
 └── LICENSE
