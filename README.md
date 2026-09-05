@@ -69,8 +69,7 @@ Dashboard: https://app.powerbi.com/groups/me/reports/f828ae2e-c9d9-416c-9b78-8e8
 ├── data/                       # Raw and cleaned datasets
 ├── result_plot/                # Key plots referenced in this README
 ├── reports/                    # Full stakeholder write-up (PDF)
-├── eda.ipynb                   # Python cleaning + EDA notebook
-├── eda.py                     # Runnable version of the cleaning + EDA pipeline
+├── eda.py                   # Python cleaning + EDA notebook
 ├── requirements.txt
 └── LICENSE
 ```
