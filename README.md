@@ -13,6 +13,8 @@ Which demographic and MRI-derived brain measures track with dementia progression
 - 150 subjects, aged 60–96 at baseline, each scanned on 2+ visits at least a year apart (373 total imaging sessions)
 - 72 subjects nondemented throughout the study; 64 demented at first visit and remained so; 14 converted from nondemented to demented during the study window
 
+Raw and cleaned data files (`data/oasis_longitudinal.csv`, `data/oasis_cleaned.csv`) are small enough to be committed directly — no separate download step needed to reproduce the pipeline.
+
 ## Pipeline
 
 This project deliberately spans the full analytics stack rather than stopping at one tool:
@@ -20,6 +22,13 @@ This project deliberately spans the full analytics stack rather than stopping at
 1. **Python (pandas, seaborn)** — data cleaning with documented, non-blind decisions (e.g. MMSE nulls dropped at the row level, not the subject level; SES excluded from analysis as an explicit scoping decision, not a data-quality fix), exploratory analysis, and per-subject progression comparisons.
 2. **Azure SQL Database** — cleaned data loaded into SQL Server; analytical queries (joins, subqueries, self-joins, window-style aggregations) covering group trends, watch-list flagging, and per-subject decline.
 3. **Power BI (Power Query + DAX)** — an interactive dashboard connected via Import, with DAX measures for KPIs, group- and CDR-based comparisons, and a published Power BI Service report.
+
+## Running the notebook
+
+```bash
+pip install -r requirements.txt
+jupyter notebook eda.ipynb
+```
 
 ## Key findings
 
@@ -38,20 +47,19 @@ Three-page Power BI report — Overview (headline KPIs and trends), Population (
 ## Repository structure
 
 ```
-├── oasis_longitudinal.csv        # Raw dataset
-├── oasis_cleaned.csv             # Cleaned dataset (post Phase 1 decisions)
-├── eda.ipynb                     # Python cleaning + EDA notebook
-├── oasis2_mri_queries.sql        # Analytical SQL queries (Azure SQL DB)
-├── oasis2_mri.pbix               # Power BI dashboard
-├── powerbi_theme.json            # Custom Power BI report theme
-└── notes/                        # Project documentation
-    ├── 00_Project_Overview.md
-    ├── 01_Dataset_Schema.md
-    ├── 02_EDA_Notes.md
-    ├── 03_Findings_and_Actions.md
-    └── 04_Project_Plan.md
+├── notes/                      # Project documentation and methodology notes
+├── sql/                        # Analytical SQL queries (Azure SQL DB)
+├── dashboard/                  # Power BI dashboard (.pbix) and theme
+├── data/                       # Raw and cleaned datasets
+├── eda.ipynb                   # Python cleaning + EDA notebook
+├── requirements.txt
+└── LICENSE
 ```
 
 ## Tools
 
-Python (pandas, seaborn) · Azure SQL Database · Power BI (Power Query, DAX)
+Python (pandas, seaborn, numpy, matplotlib) · Azure SQL Database · Power BI (Power Query, DAX)
+
+## License
+
+MIT — see [LICENSE](LICENSE).
