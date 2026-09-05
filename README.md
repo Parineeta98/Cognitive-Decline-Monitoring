@@ -1,10 +1,10 @@
 # Cognitive Decline Monitoring — OASIS-2 Longitudinal Analysis
 
-A full-pipeline analytics project examining how diagnostic tests and MRI-derived brain measures track with dementia progression, framed as an operations/monitoring question for a memory clinic.
+A full-pipeline analytics project examining how diagnostic tests and MRI-derived brain measures track with dementia progression, framed as an operations/monitoring question for a mental health clinic.
 
 ## Business question
 
-Which tests (MMSE and CDR) and MRI-derived brain measures track with dementia progression across visits, and what should a memory clinic's monitoring/intervention protocol look like as a result?
+Which tests (MMSE and CDR) and MRI-derived brain measures track with dementia progression across visits, and what should a mental health clinic's monitoring/intervention protocol look like as a result?
 
 ## Dataset
 
