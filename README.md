@@ -1,10 +1,10 @@
 # Cognitive Decline Monitoring — OASIS-2 Longitudinal Analysis
 
-A full-pipeline analytics project examining how demographic and MRI-derived brain measures track with dementia progression, framed as an operations/monitoring question for a memory clinic rather than a diagnostic ML model.
+A full-pipeline analytics project examining how diagnostic tests and MRI-derived brain measures track with dementia progression, framed as an operations/monitoring question for a memory clinic.
 
 ## Business question
 
-Which demographic and MRI-derived brain measures track with dementia progression across visits, and what should a memory clinic's monitoring/intervention protocol look like as a result?
+Which tests (MMSE and CDR) and MRI-derived brain measures track with dementia progression across visits, and what should a memory clinic's monitoring/intervention protocol look like as a result?
 
 ## Dataset
 
@@ -13,39 +13,33 @@ Which demographic and MRI-derived brain measures track with dementia progression
 - 150 subjects, aged 60–96 at baseline, each scanned on 2+ visits at least a year apart (373 total imaging sessions)
 - 72 subjects nondemented throughout the study; 64 demented at first visit and remained so; 14 converted from nondemented to demented during the study window
 
-Raw and cleaned data files (`data/oasis_longitudinal.csv`, `data/oasis_cleaned.csv`) are small enough to be committed directly — no separate download step needed to reproduce the pipeline.
+Raw and cleaned data files (`data/oasis_longitudinal.csv`, `data/oasis_cleaned.csv`) are small enough to be committed directly, no separate download step is needed to reproduce the pipeline.
 
 ## Pipeline
 
-This project deliberately spans the full analytics stack rather than stopping at one tool:
-
-1. **Python (pandas, seaborn)** — data cleaning with documented, non-blind decisions (e.g. MMSE nulls dropped at the row level, not the subject level; SES excluded from analysis as an explicit scoping decision, not a data-quality fix), exploratory analysis, and per-subject progression comparisons.
-2. **Azure SQL Database** — cleaned data loaded into SQL Server; analytical queries (joins, subqueries, self-joins, window-style aggregations) covering group trends, watch-list flagging, and per-subject decline.
-3. **Power BI (Power Query + DAX)** — an interactive dashboard connected via Import, with DAX measures for KPIs, group- and CDR-based comparisons, and a published Power BI Service report.
+1. **Python (pandas, seaborn)** — data cleaning with documented, non-blind decisions (e.g. MMSE nulls dropped at the row level, not the subject level; SES excluded from analysis as an explicit scoping decision), exploratory analysis, and per-subject progression comparisons.
+2. **Azure SQL Database** — cleaned data loaded into Azure SQL Server; analytical queries (joins, subqueries, self-joins, window-style aggregations) covering group trends, watch-list flagging, and per-subject decline.
+3. **Power BI (Power Query + DAX)** — an interactive dashboard connected via Import, with DAX measures for KPIs, group and CDR-based comparisons, and a published Power BI Service report.
 
 ## Running the notebook
 
+The analysis can be run as a regular Python script:
+
 ```bash
 pip install -r requirements.txt
-jupyter notebook eda.ipynb
-```
-
-The analysis can also be run as a regular Python script:
-
-```bash
 python eda.py
 ```
 
-The script writes the cleaned dataset to `data/oasis_cleaned.csv` and saves
-the analysis plots to `result_plot/`.
+The script saves the cleaned dataset to `data/oasis_cleaned.csv` and saves
+the plots to `result_plot/`.
 
 ## Key findings
 
-**1. A normal exam doesn't always mean a normal memory score.** About 1 in 8 patients with a normal clinical exam (CDR = 0) still scored below the typical range on the memory test (MMSE < 28) — and this shows up at a similar rate in patients who stay healthy and patients who later develop dementia. Brain-volume scans add a piece the memory test misses: structural decline can already be underway while the memory test still looks normal. A clinic could flag this combination for a shorter check-in window rather than waiting for the next scheduled visit.
+**1. A normal exam doesn't always mean a normal memory score.** About 1 in 8 patients with a normal clinical exam (CDR = 0) still scored below the typical range on the MMSE test (MMSE < 28), and this shows up at a similar rate in patients who stay healthy and patients who later develop dementia. Brain-volume scans show structural decline can already be underway while the MMSE score is still normal. A clinic could flag this combination for a shorter check-in window rather than waiting for the next scheduled visit.
 
-**2. The memory test stops being useful once someone's already diagnosed.** Patients rated "mild" (CDR 1) and "moderate" (CDR 2) score almost identically on the memory test, with heavily overlapping ranges — confirmed both in the original boxplot analysis and in the dashboard's CDR-level comparison. Past initial diagnosis, tracking progression should rely on clinical rating or structural markers instead of memory test trend.
+**2. The MMSE stops being useful once someone's already diagnosed.** Patients rated "mild" (CDR 1) and "moderate" (CDR 2) score almost identically on the MMSE test, with heavily overlapping ranges, confirmed both in the original boxplot analysis and in the dashboard's CDR-level comparison. Past initial diagnosis, tracking progression should rely on clinical rating or structural markers instead of past MMSE scores.
 
-**3. Brain volume loss is universal after diagnosis, but the pace is very different person to person.** All 14 patients who converted to dementia during the study showed measurable brain-volume decline — but the fastest-declining patient lost volume roughly 7x quicker than the slowest. Supports individualized rather than fixed-interval monitoring.
+**3. Brain volume loss is universal after diagnosis, but the pace is very different for every person.** All 14 patients who converted to dementia during the study showed measurable brain-volume decline, but the fastest-declining patient lost volume roughly 7x quicker than the slowest. Supports individualized rather than fixed-interval monitoring.
 
 Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.pdf`](reports/Cognitive_Decline_Monitoring_Stakeholder_Report.pdf)
 
