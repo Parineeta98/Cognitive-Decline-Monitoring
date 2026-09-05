@@ -48,9 +48,9 @@ Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.docx`](
 
 ![Pace of brain-volume decline varies widely across converted patients](result_plot/decline_pace_difference_by_subject.png)
 
-## Dashboard
 
-Three-page Power BI report — Overview (headline KPIs and trends), Population (demographics), Clinical Insights & Risk Indicators (regression, watch-list rate, per-subject decline). Published to Power BI Service; screenshots to be added here.
+Dashboard: https://app.powerbi.com/groups/me/reports/f828ae2e-c9d9-416c-9b78-8e8c14fa7c5a/94fcb722c9486d951d24?experience=power-bi
+
 
 ## Repository structure
 
