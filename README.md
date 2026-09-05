@@ -38,7 +38,7 @@ jupyter notebook eda.ipynb
 
 **3. Brain volume loss is universal after diagnosis, but the pace is very different person to person.** All 14 patients who converted to dementia during the study showed measurable brain-volume decline — but the fastest-declining patient lost volume roughly 7x quicker than the slowest. Supports individualized rather than fixed-interval monitoring.
 
-Full write-up: [`notes/03_Findings_and_Actions.md`](notes/03_Findings_and_Actions.md)
+Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.docx`](reports/Cognitive_Decline_Monitoring_Stakeholder_Report.docx)
 
 ### Selected plots
 
@@ -55,11 +55,11 @@ Three-page Power BI report — Overview (headline KPIs and trends), Population (
 ## Repository structure
 
 ```
-├── notes/                      # Project documentation and methodology notes
 ├── sql/                        # Analytical SQL queries (Azure SQL DB)
 ├── dashboard/                  # Power BI dashboard (.pbix) and theme
 ├── data/                       # Raw and cleaned datasets
 ├── result_plot/                # Key plots referenced in this README
+├── reports/                    # Full stakeholder write-up (Word)
 ├── eda.ipynb                   # Python cleaning + EDA notebook
 ├── requirements.txt
 └── LICENSE
