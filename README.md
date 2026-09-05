@@ -30,6 +30,15 @@ pip install -r requirements.txt
 jupyter notebook eda.ipynb
 ```
 
+The analysis can also be run as a regular Python script:
+
+```bash
+python eda.py
+```
+
+The script writes the cleaned dataset to `data/oasis_cleaned.csv` and saves
+the analysis plots to `result_plot/`.
+
 ## Key findings
 
 **1. A normal exam doesn't always mean a normal memory score.** About 1 in 8 patients with a normal clinical exam (CDR = 0) still scored below the typical range on the memory test (MMSE < 28) — and this shows up at a similar rate in patients who stay healthy and patients who later develop dementia. Brain-volume scans add a piece the memory test misses: structural decline can already be underway while the memory test still looks normal. A clinic could flag this combination for a shorter check-in window rather than waiting for the next scheduled visit.
@@ -38,7 +47,7 @@ jupyter notebook eda.ipynb
 
 **3. Brain volume loss is universal after diagnosis, but the pace is very different person to person.** All 14 patients who converted to dementia during the study showed measurable brain-volume decline — but the fastest-declining patient lost volume roughly 7x quicker than the slowest. Supports individualized rather than fixed-interval monitoring.
 
-Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.docx`](reports/Cognitive_Decline_Monitoring_Stakeholder_Report.docx)
+Full write-up: [`reports/Cognitive_Decline_Monitoring_Stakeholder_Report.pdf`](reports/Cognitive_Decline_Monitoring_Stakeholder_Report.pdf)
 
 ### Selected plots
 
@@ -59,8 +68,9 @@ Three-page Power BI report — Overview (headline KPIs and trends), Population (
 ├── dashboard/                  # Power BI dashboard (.pbix) and theme
 ├── data/                       # Raw and cleaned datasets
 ├── result_plot/                # Key plots referenced in this README
-├── reports/                    # Full stakeholder write-up (Word)
+├── reports/                    # Full stakeholder write-up (PDF)
 ├── eda.ipynb                   # Python cleaning + EDA notebook
+├── eda.py                     # Runnable version of the cleaning + EDA pipeline
 ├── requirements.txt
 └── LICENSE
 ```
